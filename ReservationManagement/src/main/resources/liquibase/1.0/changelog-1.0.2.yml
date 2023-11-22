@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create fields table
+      author: Murad
+      changes:
+        - createTable:
+            tableName: fields
+            columns:
+              - column:
+                  name: fieldId
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                  remarks: id of fields
+              - column:
+                  name: fieldName
+                  type: varchar(64)
+                  remarks: name of field
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+                  remarks: When the field created
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+                  remarks: When the field updated
+            remarks: Table to store information about fields

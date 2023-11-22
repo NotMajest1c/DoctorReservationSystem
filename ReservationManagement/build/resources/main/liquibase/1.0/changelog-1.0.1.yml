@@ -1,0 +1,60 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create patients table
+      author: Murad
+      changes:
+        - createTable:
+            tableName: patients
+            columns:
+              - column:
+                  name: userId
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                  remarks: id of patients
+              - column:
+                  name: name
+                  type: varchar(64)
+                  remarks: firstname of patient
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastname
+                  type: varchar(64)
+                  remarks: lastname of patient
+                  constraints:
+                    nullable: false
+              - column:
+                  name: age
+                  type: smallint
+                  constraints:
+                    nullable: false
+                  remarks: age of patient
+              - column:
+                  name: login
+                  type: varchar(64)
+                  remarks: login of patient
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(64)
+                  remarks: password of patient
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+                  remarks: When the patient created
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+                  remarks: When the patient updated
+            remarks: Table to store information about patients
