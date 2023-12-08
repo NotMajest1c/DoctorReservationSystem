@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create reservations table
+      author: Murad
+      changes:
+        - createTable:
+            tableName: reservations
+            columns:
+              - column:
+                  name: reservationId
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                  remarks: id of reservations
+              - column:
+                  name: customerId
+                  type: bigint
+                  constraints:
+                    foreignKey:
+                      references:
+                        tableName: customers
+                        columnNames:
+                          - customerId
+                    nullable: false
+                  remarks: customerId of reservation
+              - column:
+                  name: expertId
+                  type: bigint
+                  constraints:
+                    foreignKey:
+                      references:
+                        tableName: experts
+                        columnNames:
+                          - expertId
+                    nullable: false
+                  remarks: expertId of reservation
+
+
+              - column:
+                  name: startTime
+                  type: time
+                  constraints:
+                    nullable: false
+                  remarks: reservation start time
+              - column:
+                  name: endTime
+                  type: time
+                  constraints:
+                    nullable: false
+                  remarks: reservation end time
+              - column:
+                  name: reservationDate
+                  type: date
+                  constraints:
+                    nullable: false
+                  remarks: reservation date
+
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+                  remarks: When the customer created
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValue: now()
+                  constraints:
+                    nullable: false
+                  remarks: When the customer updated
+            remarks: Table to store information about customers
